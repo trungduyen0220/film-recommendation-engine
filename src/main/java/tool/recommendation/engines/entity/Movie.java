@@ -1,16 +1,21 @@
 package tool.recommendation.engines.entity;
 
+import java.util.List;
+
 public class Movie {
 	private String id;
 	private String title;
 	private int year;
 	private String genres;
-	private String director;
+	private List<String> director;
 	private String country;
 	private int minutes;
 	private String poster;
 	
-	public Movie(String id, String title, int year, String genres, String director, String country, int minutes,
+	public Movie() {
+		
+	}
+	public Movie(String id, String title, int year, String country, String genres, List<String> director, int minutes,
 			String poster) {
 		super();
 		this.id = id;
@@ -47,10 +52,10 @@ public class Movie {
 	public void setGenres(String genres) {
 		this.genres = genres;
 	}
-	public String getDirector() {
+	public List<String> getDirector() {
 		return director;
 	}
-	public void setDirector(String director) {
+	public void setDirector(List<String> director) {
 		this.director = director;
 	}
 	public String getCountry() {
@@ -73,7 +78,12 @@ public class Movie {
 	}
 	@Override
 	public String toString() {
-		return "Movie: " + id + ", " + title + ", " + year + ", " + genres + ", "
-				+ director + ", " + country + ", " + minutes + ", " + poster;
+		String lstDirector = "";
+		for (String director : director) {
+			lstDirector += director;
+			lstDirector += "+ ";
+		}
+		return "Movie: " + id + ", " + title + ", " + year + ", genres: " + genres + ", "
+				+ lstDirector + ", " + country + ", " + minutes + ", " + poster;
 	}
 }
